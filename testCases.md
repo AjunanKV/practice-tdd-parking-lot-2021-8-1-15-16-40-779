@@ -19,7 +19,7 @@ Given a wrong parking ticket
 When fetch the car  
 Then return no car
 
-[] Case 5
+[X] Case 5
 Given a valid parking ticket but already been used  
 When fetch the car  
 Then return no car  
