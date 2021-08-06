@@ -68,15 +68,14 @@ public class ParkingLotTest {
         //given
         ParkingLot parkingLot = new ParkingLot();
         Car car = new Car();
-        ParkingTicket parkingTicket = new ParkingTicket();
+        ParkingTicket parkingTicket = parkingLot.park(car);
 
         //when
-        Car firstActualCar = parkingLot.fetch(parkingTicket);
-        Car secondActualCar = parkingLot.fetch(parkingTicket);
+        parkingLot.fetch(parkingTicket);
+        Car resUsedTicket = parkingLot.fetch(parkingTicket);
 
         //then
-        assertEquals(car,firstActualCar);
-        assertNull(secondActualCar);
+        assertNull(resUsedTicket);
     }
 
 }
