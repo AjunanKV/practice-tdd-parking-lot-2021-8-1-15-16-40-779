@@ -78,4 +78,19 @@ public class ParkingLotTest {
         assertNull(resUsedTicket);
     }
 
+    @Test
+    public void should_return_nothing_when_fetch_car_given_parking_lot_without_any_position() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        Car car = new Car();
+
+        for (int counter = 0; counter <= 10; counter++) {
+            parkingLot.park(car);
+        }
+        //when
+        ParkingTicket parkWhenFull = parkingLot.park(car);
+        //then
+        assertNull(parkWhenFull);
+    }
+
 }
