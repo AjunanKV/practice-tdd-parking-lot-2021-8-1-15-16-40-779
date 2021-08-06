@@ -1,7 +1,5 @@
 package com.parkinglot;
-
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingLotTest {
@@ -10,10 +8,8 @@ public class ParkingLotTest {
         //given
         ParkingLot parkingLot = new ParkingLot();
         Car car = new Car();
-
         //when
         ParkingTicket parkingTicket = parkingLot.park(car);
-
         //then
         assertNotNull(parkingTicket);
     }
@@ -24,10 +20,8 @@ public class ParkingLotTest {
         ParkingLot parkingLot = new ParkingLot();
         Car car = new Car();
         ParkingTicket parkingTicket = parkingLot.park(car);
-
         //when
         Car actualCar = parkingLot.fetch(parkingTicket);
-
         //then
         assertEquals(car, actualCar);
     }
@@ -40,7 +34,6 @@ public class ParkingLotTest {
         Car bobCar = new Car();
         ParkingTicket aliceParkingTicket = parkingLot.park(aliceCar);
         ParkingTicket bobParkingTicket = parkingLot.park(bobCar);
-
         //when
         Car actualAliceCar = parkingLot.fetch(aliceParkingTicket);
         Car actualBobCar = parkingLot.fetch(bobParkingTicket);
@@ -56,7 +49,6 @@ public class ParkingLotTest {
         ParkingLot parkingLot = new ParkingLot();
         Car car = new Car();
         ParkingTicket invalidParkingTicket = new ParkingTicket();
-
         //when
         Car actualCar = parkingLot.fetch(invalidParkingTicket);
         //then
@@ -69,11 +61,9 @@ public class ParkingLotTest {
         ParkingLot parkingLot = new ParkingLot();
         Car car = new Car();
         ParkingTicket parkingTicket = parkingLot.park(car);
-
         //when
         parkingLot.fetch(parkingTicket);
         Car resUsedTicket = parkingLot.fetch(parkingTicket);
-
         //then
         assertNull(resUsedTicket);
     }
@@ -83,11 +73,10 @@ public class ParkingLotTest {
         //given
         ParkingLot parkingLot = new ParkingLot();
         Car car = new Car();
-
+        //when
         for (int counter = 0; counter <= 10; counter++) {
             parkingLot.park(car);
         }
-        //when
         ParkingTicket parkWhenFull = parkingLot.park(car);
         //then
         assertNull(parkWhenFull);
