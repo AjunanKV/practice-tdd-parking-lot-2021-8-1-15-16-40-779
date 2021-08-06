@@ -8,6 +8,9 @@ public class ParkingLot {
     private Map<ParkingTicket, Car> parkedPosition = new HashMap<>();
 
     public ParkingTicket park(Car car) {
+        if (parkedPosition.size() >= 10) {
+            return null;
+        }
         ParkingTicket parkingTicket = new ParkingTicket();
         parkedPosition.put(parkingTicket, car);
         return parkingTicket;
