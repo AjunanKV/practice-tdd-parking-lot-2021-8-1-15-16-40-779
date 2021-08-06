@@ -10,12 +10,15 @@ public class ParkingLot {
     public ParkingTicket park(Car car) {
         ParkingTicket parkingTicket = new ParkingTicket();
         parkedPosition.put(parkingTicket, car);
-        return  parkingTicket;
+        return parkingTicket;
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-        return parkedPosition.get(parkingTicket);
+        Car fetchedCar = parkedPosition.get(parkingTicket);
+        parkedPosition.remove(parkingTicket);
+        if (parkedPosition.containsKey(parkingTicket)) {
+            return null;
+        }
+        return fetchedCar;
     }
-
-
 }
