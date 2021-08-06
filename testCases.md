@@ -1,31 +1,36 @@
 # story 1
-[] Case1  
+[X] Case1  
 Given a parking lot, and a car  
 When park the car  
 Then return a parking ticket. 
 
-[] Case 2
+[X] Case 2
 Given a valid parking ticket  
 When fetch the car   
 Then return the car 
 
 [] Case 3
+Given a parking lot with two parked cars and two parking tickets  
+When fetch twice  
+Then return right car 
+
+[] Case 4
 Given a wrong parking ticket
 When fetch the car  
 Then return no car  
 
 
-[] Case 4
+[] Case 5
 Given a no parking ticket
 When fetch the car  
 Then return no car
 
-[] Case 5
+[] Case 6
 Given a valid parking ticket but already been used  
 When fetch the car  
 Then return no car  
 
-[] Case 6
+[] Case 7
 Given full parking lot  
 When park the car  
 Then car cannot park and no parking ticket  
