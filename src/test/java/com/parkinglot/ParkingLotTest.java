@@ -288,12 +288,6 @@ public class ParkingLotTest {
 
     }
 
-    @Test
-    void should_return_ticket_when_park() {
-        Car car = new Car();
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(new ParkingLot());
-
-    }
 
     @Test
     public void should_return_correct_car_when_fetch_twice_given_a_standard_parking_boy_manage_two_parking_lots_with_parked_cars_and_two_parking_tickets() {
@@ -318,6 +312,8 @@ public class ParkingLotTest {
         assertEquals(bobCar,actualBobCar);
 
     }
+
+ 
 
 }
 
