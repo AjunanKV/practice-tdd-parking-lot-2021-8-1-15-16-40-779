@@ -1,22 +1,39 @@
 package com.parkinglot;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class ParkingLot {
     private Map<ParkingTicket, Car> parkedPosition = new HashMap<>();
+    private final int DEFAULT_CAPACITY = 10;
+    private int capacity;
+
+    public ParkingLot() {
+        this.capacity = DEFAULT_CAPACITY;
+    }
+
+    public ParkingLot(int capacity) {
+        parkedPosition = new HashMap<>();
+        this.capacity = capacity;
+    }
+
 
     public ParkingTicket park(Car car) {
-        if (parkedPosition.size() > 10) {
-             throw new ParkingWithNoPosition();
+
+        if (ifFull()) {
+            throw new ParkingWithNoPosition();
         }
         ParkingTicket parkingTicket = new ParkingTicket();
         parkedPosition.put(parkingTicket, car);
         return parkingTicket;
     }
 
+    boolean ifFull() {
+        return DEFAULT_CAPACITY==parkedPosition.size();
+    }
+
     public Car fetch(ParkingTicket parkingTicket) {
-        if(!parkedPosition.containsKey(parkingTicket))
-        {
+        if (!parkedPosition.containsKey(parkingTicket)) {
             throw new UnrecognizedParkingTicketsException();
         }
         Car fetchedCar = parkedPosition.get(parkingTicket);

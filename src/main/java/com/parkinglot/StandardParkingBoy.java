@@ -1,27 +1,54 @@
 package com.parkinglot;
 
+import java.util.List;
 import java.util.Map;
 
 
 public class StandardParkingBoy {
     private Car car;
-    ParkingLot parkingLots = new ParkingLot();
+    ParkingLot parkingLot = new ParkingLot();
+    private List<ParkingLot> parkingLots;
+    private boolean isParkingBoyManageMorethanOneParkingLot=false;
 
     public StandardParkingBoy(ParkingLot parkingLots) {
+        this.parkingLot = parkingLots;
+    }
+
+    public StandardParkingBoy(List<ParkingLot> parkingLots) {
+        this.isParkingBoyManageMorethanOneParkingLot = true;
         this.parkingLots = parkingLots;
     }
 
     public ParkingTicket park(Car car) {
-        if (getMap().size() > 10) {
-            throw new ParkingWithNoPosition();
+
+        if (isParkingBoyManageMorethanOneParkingLot) {
+            ParkingLot currentParkingLot = getAvailableParkingLot(parkingLots);
+            if (currentParkingLot != null) {
+                return currentParkingLot.park(car);
+            } else {
+                return null;
+            }
+        } else {
+            ParkingTicket parkingTicket = new ParkingTicket();
+            getMap().put(parkingTicket, car);
+            return parkingTicket;
         }
-        ParkingTicket parkingTicket = new ParkingTicket();
-        getMap().put(parkingTicket, car);
-        return parkingTicket;
+
+    }
+
+    private ParkingLot getAvailableParkingLot(List<ParkingLot> parkingLots) {
+        this.parkingLots = parkingLots;
+        for (ParkingLot currentParkingLot : parkingLots) {
+            if (!currentParkingLot.ifFull()) {
+                System.out.print("Car is parked in Parking Lot " + (parkingLots.indexOf(currentParkingLot) + 1));
+                return this.parkingLot = currentParkingLot;
+            }
+        }
+        return null;
     }
 
     private Map<ParkingTicket, Car> getMap() {
-        return parkingLots.getParkedPosition();
+        return parkingLot.getParkedPosition();
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
