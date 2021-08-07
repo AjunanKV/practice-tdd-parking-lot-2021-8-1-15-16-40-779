@@ -80,3 +80,12 @@ Then return error message: Unrecognized parking ticket.
 Given a full parking lot, a car  
 When park a car by Parking boy  
 Then return error message: No available position.  
+
+#Story 4
+[X] Case1  
+Given a multiple parking lots, and a car  
+When park the car with parking boy  
+Then return a parking ticket always from the first lot when have space
+
+[] Case 2
+Story 1-3 should be implemented
