@@ -176,7 +176,6 @@ public class ParkingLotTest {
         //given
         ParkingLot parkingLot = new ParkingLot();
         Car car = new Car();
-        // StandardParkingBoy standardParkingBoy;
         StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLot);
         ParkingTicket parkingTicket = parkingLot.park(car);
         //when
@@ -184,6 +183,21 @@ public class ParkingLotTest {
         Car resUsedTicket = standardParkingBoy.fetch(parkingTicket);
         //then
         assertNull(resUsedTicket);
+    }
+    @Test
+    public void should_return_nothing_when_fetch_car_by_Standard_Parking_boy_given_parking_lot_without_any_position() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        Car car = new Car();
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLot);
+        //when
+        for (int counter = 0; counter <= 10; counter++) {
+            parkingLot.park(car);
+        }
+
+        ParkingTicket parkWhenFull = standardParkingBoy.park(car);
+        //then
+        assertNull(parkWhenFull);
     }
 
 
