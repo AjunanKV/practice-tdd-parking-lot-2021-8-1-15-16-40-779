@@ -1,4 +1,4 @@
-# story 1
+
 [X] Case1  
 Given a parking lot, and a car  
 When park the car  
@@ -29,20 +29,13 @@ Given full parking lot
 When park the car  
 Then car cannot park and no parking ticket  
 
+# story 2
+[X] Case 1
+Given wrong ticket  
+When fetch the car  
+Then return error message: Unrecognized parking ticket.  
 
-
-
-
-
-
-
-
-[] Case 6
-Given a parked car  
-When park the car  
-Then no changes
-
-[] Case 7
-Given park null car
-When park the car
-Then no parking ticket
+[] Case 2
+Given a full parking lot, a car  
+When park a car  
+Then return error message: No available position.   
