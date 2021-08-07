@@ -294,5 +294,31 @@ public class ParkingLotTest {
         StandardParkingBoy standardParkingBoy = new StandardParkingBoy(new ParkingLot());
 
     }
+
+    @Test
+    public void should_return_correct_car_when_fetch_twice_given_a_standard_parking_boy_manage_two_parking_lots_with_parked_cars_and_two_parking_tickets() {
+        //given
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        ParkingLot parkingLot1 = new ParkingLot();
+        ParkingLot parkingLot2 = new ParkingLot();
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+        Car aliceCar = new Car();
+        Car bobCar = new Car();
+        ParkingTicket aliceTicket = parkingLot1.park(aliceCar);
+        ParkingTicket bobTicket = parkingLot2.park(bobCar);
+        StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLots);
+
+        //when
+        Car actualAliceCar = parkingBoy.fetch(aliceTicket);
+        Car actualBobCar = parkingBoy.fetch(bobTicket);
+
+        //then
+        assertEquals(aliceCar,actualAliceCar);
+        assertEquals(bobCar,actualBobCar);
+
+    }
+
 }
+
 
