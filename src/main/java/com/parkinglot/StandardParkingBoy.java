@@ -6,7 +6,6 @@ import java.util.Map;
 public class StandardParkingBoy {
     private Car car;
     ParkingLot parkingLots = new ParkingLot();
-
     public StandardParkingBoy(ParkingLot parkingLots) {
         this.parkingLots = parkingLots;
     }
@@ -16,5 +15,10 @@ public class StandardParkingBoy {
         ParkingTicket parkingTicket = new ParkingTicket();
         return parkingTicket;
 }
+
+    public Car fetch(ParkingTicket parkingTicket) {
+        return car;
+    }
+
 
 }
