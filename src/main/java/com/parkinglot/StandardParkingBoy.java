@@ -25,7 +25,7 @@ public class StandardParkingBoy {
             if (currentParkingLot != null) {
                 return currentParkingLot.park(car);
             } else {
-                return null;
+                throw new ParkingWithNoPosition();
             }
         } else {
 
