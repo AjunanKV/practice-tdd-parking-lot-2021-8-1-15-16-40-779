@@ -111,4 +111,17 @@ public class ParkingLotTest {
         //then
         assertEquals(errorMessage,exception.getMessage());
     }
+
+    @Test
+    public void should_return_Parking_ticket_when_park_car_by_Standard_parking_boy_given_parking_lot_and_car() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        Car car = new Car();
+        //when
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLot);
+        ParkingTicket parkingTicket = standardParkingBoy.park(car);
+        //then
+        assertNotNull(parkingTicket);
+    }
+
 }
