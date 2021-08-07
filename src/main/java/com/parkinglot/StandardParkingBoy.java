@@ -56,17 +56,28 @@ public class StandardParkingBoy {
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-        if (!getMap().containsKey(parkingTicket)) {
-            throw new UnrecognizedParkingTicketsException();
-        }
-        Car fetchedCar = getMap().get(parkingTicket);
-        getMap().remove(parkingTicket);
-        if (getMap().containsKey(parkingTicket)) {
-            throw new ParkingWithNoPosition();
-        } else {
-            return fetchedCar;
-        }
+       ParkingLot findCarinParkingLot = findCarinParkingLot(parkingTicket);
+       if(findCarinParkingLot == null)
+       {
+           throw new UnrecognizedParkingTicketsException();
+       }
+       else{
+           return findCarinParkingLot.fetch(parkingTicket);
+       }
+
     }
 
+    private ParkingLot findCarinParkingLot(ParkingTicket parkingTicket) {
+        if(isParkingBoyManageMorethanOneParkingLot)
+        {
+            for(ParkingLot currentParkingLot : parkingLots)
+            {
+                if(currentParkingLot.getParkedPosition().containsKey(parkingTicket)){
+                    return currentParkingLot;
+                }
+            }
+        }
+        return parkingLot;
+    }
 
 }
