@@ -19,6 +19,7 @@ public class ParkingLotTest {
         System.setOut(new PrintStream(outContent));
     }
 
+    //Customer
     @Test
     public void should_return_parking_ticken_when_park_given_parking_lot_and_car() {
         //given
@@ -59,50 +60,49 @@ public class ParkingLotTest {
         assertEquals(bobCar, actualBobCar);
     }
 
-    @Test
-    public void should_return_nothing_when_fetch_car_given_parking_lot_wrong_ticket_number() {
-        //given
-        ParkingLot parkingLot = new ParkingLot();
-        Car car = new Car();
-        ParkingTicket invalidParkingTicket = new ParkingTicket();
-        //when
-        Car actualCar = parkingLot.fetch(invalidParkingTicket);
-        //then
-        assertNull(actualCar);
-    }
+//    @Test
+//    public void should_return_nothing_when_fetch_car_given_parking_lot_wrong_ticket_number() {
+//        //given
+//        ParkingLot parkingLot = new ParkingLot();
+//        Car car = new Car();
+//        ParkingTicket invalidParkingTicket = new ParkingTicket();
+//        //when
+//        Car actualCar = parkingLot.fetch(invalidParkingTicket);
+//        //then
+//        assertNull(actualCar);
+//    }
 
-    @Test
-    public void should_return_nothing_when_fetch_car_given_parking_lot_used_parking_ticket() {
-        //given
-        ParkingLot parkingLot = new ParkingLot();
-        Car car = new Car();
-        ParkingTicket parkingTicket = parkingLot.park(car);
-        //when
-        parkingLot.fetch(parkingTicket);
-        Car resUsedTicket = parkingLot.fetch(parkingTicket);
-        //then
-        assertNull(resUsedTicket);
-    }
+//    @Test
+//    public void should_return_nothing_when_fetch_car_given_parking_lot_used_parking_ticket() {
+//        //given
+//        ParkingLot parkingLot = new ParkingLot();
+//        Car car = new Car();
+//        ParkingTicket parkingTicket = parkingLot.park(car);
+//        //when
+//        parkingLot.fetch(parkingTicket);
+//        Car resUsedTicket = parkingLot.fetch(parkingTicket);
+//        //then
+//        assertNull(resUsedTicket);
+//    }
 
-    @Test
-    public void should_return_nothing_when_fetch_car_given_parking_lot_without_any_position() {
-        //given
-        ParkingLot parkingLot = new ParkingLot();
-        Car car = new Car();
-        //when
-        for (int counter = 0; counter <= 10; counter++) {
-            parkingLot.park(car);
-        }
-        ParkingTicket parkWhenFull = parkingLot.park(car);
-        //then
-        assertNull(parkWhenFull);
-    }
+//    @Test
+//    public void should_return_nothing_when_fetch_car_given_parking_lot_without_any_position() {
+//        //given
+//        ParkingLot parkingLot = new ParkingLot();
+//        Car car = new Car();
+//        //when
+//        for (int counter = 0; counter <= 10; counter++) {
+//            parkingLot.park(car);
+//        }
+//        ParkingTicket parkWhenFull = parkingLot.park(car);
+//        //then
+//        assertNull(parkWhenFull);
+//    }
 
     @Test
     public void should_return_error_message_when_fetch_car_given_parking_lot_wrong_parking_ticket() {
         //given
         ParkingLot parkingLot = new ParkingLot();
-        ParkingTicket invalidParkingTicket = new ParkingTicket();
         String errorMessage = "Unrecognized parking ticket.";
         //when
         ParkingTicket unrecognizedParkingTicket = new ParkingTicket();
@@ -119,7 +119,7 @@ public class ParkingLotTest {
         ParkingLot parkingLot = new ParkingLot();
         Car car = new Car();
         //when
-        for (int counter = 0; counter <= 10; counter++) {
+        for (int counter = 0; counter < 10; counter++) {
             parkingLot.park(car);
         }
         String errorMessage = "No available position.";
@@ -128,6 +128,7 @@ public class ParkingLotTest {
         assertEquals(errorMessage, exception.getMessage());
     }
 
+    //Standard parking boy
     @Test
     public void should_return_Parking_ticket_when_park_car_by_Standard_parking_boy_given_parking_lot_and_car() {
         //given
@@ -172,48 +173,48 @@ public class ParkingLotTest {
         assertEquals(bobCar, actualBobCar);
     }
 
-    @Test
-    public void should_return_nothing_when_fetch_car_by_Standard_Parking_boy_given_parking_lot_wrong_ticket_number() {
-        //given
-        ParkingLot parkingLot = new ParkingLot();
-        Car car = new Car();
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLot);
-        ParkingTicket invalidParkingTicket = new ParkingTicket();
-        //when
-        Car actualCar = standardParkingBoy.fetch(invalidParkingTicket);
-        //then
-        assertNull(actualCar);
-    }
+//    @Test
+//    public void should_return_nothing_when_fetch_car_by_Standard_Parking_boy_given_parking_lot_wrong_ticket_number() {
+//        //given
+//        ParkingLot parkingLot = new ParkingLot();
+//        Car car = new Car();
+//        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLot);
+//        ParkingTicket invalidParkingTicket = new ParkingTicket();
+//        //when
+//        Car actualCar = standardParkingBoy.fetch(invalidParkingTicket);
+//        //then
+//        assertNull(actualCar);
+//    }
 
-    @Test
-    public void should_return_nothing_when_fetch_car_by_Standard_Parking_boy_given_parking_lot_used_parking_ticket() {
-        //given
-        ParkingLot parkingLot = new ParkingLot();
-        Car car = new Car();
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLot);
-        ParkingTicket parkingTicket = parkingLot.park(car);
-        //when
-        parkingLot.fetch(parkingTicket);
-        Car resUsedTicket = standardParkingBoy.fetch(parkingTicket);
-        //then
-        assertNull(resUsedTicket);
-    }
+//    @Test
+//    public void should_return_nothing_when_fetch_car_by_Standard_Parking_boy_given_parking_lot_used_parking_ticket() {
+//        //given
+//        ParkingLot parkingLot = new ParkingLot();
+//        Car car = new Car();
+//        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLot);
+//        ParkingTicket parkingTicket = parkingLot.park(car);
+//        //when
+//        parkingLot.fetch(parkingTicket);
+//        Car resUsedTicket = standardParkingBoy.fetch(parkingTicket);
+//        //then
+//        assertNull(resUsedTicket);
+//    }
 
-    @Test
-    public void should_return_nothing_when_fetch_car_by_Standard_Parking_boy_given_parking_lot_without_any_position() {
-        //given
-        ParkingLot parkingLot = new ParkingLot();
-        Car car = new Car();
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLot);
-        //when
-        for (int counter = 0; counter <= 10; counter++) {
-            parkingLot.park(car);
-        }
-
-        ParkingTicket parkWhenFull = standardParkingBoy.park(car);
-        //then
-        assertNull(parkWhenFull);
-    }
+//    @Test
+//    public void should_return_nothing_when_fetch_car_by_Standard_Parking_boy_given_parking_lot_without_any_position() {
+//        //given
+//        ParkingLot parkingLot = new ParkingLot();
+//        Car car = new Car();
+//        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLot);
+//        //when
+//        for (int counter = 0; counter <= 10; counter++) {
+//            parkingLot.park(car);
+//        }
+//
+//        ParkingTicket parkWhenFull = standardParkingBoy.park(car);
+//        //then
+//        assertNull(parkWhenFull);
+//    }
 
     @Test
     public void should_return_error_message_when_fetch_car_by_Standard_Parking_boy_given_parking_lot_wrong_parking_ticket() {
@@ -236,15 +237,14 @@ public class ParkingLotTest {
         Car car = new Car();
         StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLot);
         //when
-        for (int counter = 0; counter <= 10; counter++) {
-            parkingLot.park(car);
+        for (int counter = 0; counter < 10; counter++) {
+            standardParkingBoy.park(car);
         }
         String errorMessage = "No available position.";
         Exception exception = assertThrows(ParkingWithNoPosition.class, () -> standardParkingBoy.park(car));
         //then
         assertEquals(errorMessage, exception.getMessage());
     }
-
 
     @Test
     public void should_return_car_parked_in_first_parking_lot_when_park_given_a_standard_parking_boy_manage_two_not_full_parking_lots_and_a_car() {
@@ -266,6 +266,33 @@ public class ParkingLotTest {
         return outContent.toString();
     }
 
+    @Test
+    public void should_return_car_parked_in_second_parking_lot_when_park_given_a_standard_parking_boy_manage_first_full_parking_lot_and_second_with_position_available_and_a_car() {
+        //given
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        ParkingLot parkingLot1 = new ParkingLot();
+        ParkingLot parkingLot2 = new ParkingLot();
+        parkingLots.add(parkingLot1);
+        Car car = new Car();
+        for (int i = 0; i < 10; i++) {
+            parkingLot1.park(car);
+        }
+        parkingLots.add(parkingLot2);
+        StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLots);
 
+        //when
+        parkingBoy.park(car);
+
+        //then
+        assertEquals("Car is parked in Parking Lot 2",systemOut());
+
+    }
+
+    @Test
+    void should_return_ticket_when_park() {
+        Car car = new Car();
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(new ParkingLot());
+
+    }
 }
 
