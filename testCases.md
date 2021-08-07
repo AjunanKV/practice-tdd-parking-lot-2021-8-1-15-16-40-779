@@ -56,7 +56,7 @@ Given a parking lot with two parked cars and two parking tickets
 When fetch twice with parking boy  
 Then return right car
 
-[] Case 4
+[X] Case 4
 Given a wrong parking ticket
 When fetch the car with parking boy  
 Then return no car
