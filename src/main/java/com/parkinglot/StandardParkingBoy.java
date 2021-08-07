@@ -26,7 +26,7 @@ public class StandardParkingBoy {
 
     public Car fetch(ParkingTicket parkingTicket) {
         if (!getMap().containsKey(parkingTicket)) {
-            return null;
+            throw new UnrecognizedParkingTicketsException();
         }
         Car fetchedCar = getMap().get(parkingTicket);
         getMap().remove(parkingTicket);
