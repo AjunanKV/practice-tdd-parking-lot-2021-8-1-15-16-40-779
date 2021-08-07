@@ -184,6 +184,7 @@ public class ParkingLotTest {
         //then
         assertNull(resUsedTicket);
     }
+
     @Test
     public void should_return_nothing_when_fetch_car_by_Standard_Parking_boy_given_parking_lot_without_any_position() {
         //given
@@ -199,6 +200,7 @@ public class ParkingLotTest {
         //then
         assertNull(parkWhenFull);
     }
+
     @Test
     public void should_return_error_message_when_fetch_car_by_Standard_Parking_boy_given_parking_lot_wrong_parking_ticket() {
         //given
@@ -211,7 +213,22 @@ public class ParkingLotTest {
         Exception exception = assertThrows(UnrecognizedParkingTicketsException.class, () -> standardParkingBoy.fetch(unrecognizedParkingTicket));
         //then
         assertEquals(errorMessage, exception.getMessage());
+    }
 
+    @Test
+    public void should_return_No_available_position_message_when_fetch_car_by_Standard_Parking_boy_given_parking_lot_without_any_position() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        Car car = new Car();
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLot);
+        //when
+        for (int counter = 0; counter <= 10; counter++) {
+            parkingLot.park(car);
+        }
+        String errorMessage = "No available position.";
+        Exception exception = assertThrows(ParkingWithNoPosition.class, () -> standardParkingBoy.park(car));
+        //then
+        assertEquals(errorMessage, exception.getMessage());
     }
 
 }
