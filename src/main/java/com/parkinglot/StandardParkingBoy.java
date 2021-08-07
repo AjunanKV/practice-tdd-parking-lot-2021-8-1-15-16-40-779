@@ -22,7 +22,10 @@ public class StandardParkingBoy {
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-
+        if(!getMap().containsKey(parkingTicket))
+        {
+            return null;
+        }
         Car fetchedCar = getMap().get(parkingTicket);
         getMap().remove(parkingTicket);
         if (getMap().containsKey(parkingTicket)) {
