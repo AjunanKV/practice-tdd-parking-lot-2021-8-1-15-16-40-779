@@ -117,4 +117,45 @@ Given a full parking lot, a car
 When park a car by Parking boy  
 Then return error message: No available position.  
 
+#Story 5
+[X] Case 1  
+Given a multiple parking lots, and a car  
+When park the car with parking boy  
+Then return a parking ticket always from the the parking lot with most spaces  
+
+[X] Case 2  
+Given a multiple parking lots, and a car  
+When park the car with parking boy  
+Then return a parking ticket always from the first lot when have space
+
+[X] Case 3  
+Given a parking lot, and a car  
+When park the car with parking boy  
+Then return a parking ticket.
+
+[X] Case 4
+Given a valid parking ticket  
+When fetch the car   
+Then return the car
+
+[X] Case 5
+Given a parking lot with two parked cars and two parking tickets  
+When fetch twice with parking boy  
+Then return right car
+
+[X] Case 6
+Given full parking lot  
+When park the car with parking boy  
+Then car cannot park and no parking ticket
+
+[X] Case 7
+Given wrong ticket  
+When fetch the car by Parking boy  
+Then return error message: Unrecognized parking ticket.
+
+[8] Case 8
+Given a full parking lot, a car  
+When park a car by Parking boy  
+Then return error message: No available position.  
+
 
