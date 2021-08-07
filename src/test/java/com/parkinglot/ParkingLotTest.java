@@ -1,5 +1,7 @@
 package com.parkinglot;
+
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingLotTest {
@@ -93,7 +95,7 @@ public class ParkingLotTest {
 
         Exception exception = assertThrows(UnrecognizedParkingTicketsException.class, () -> parkingLot.fetch(unrecognizedParkingTicket));
         //then
-        assertEquals(errorMessage,exception.getMessage());
+        assertEquals(errorMessage, exception.getMessage());
 
     }
 
@@ -107,9 +109,9 @@ public class ParkingLotTest {
             parkingLot.park(car);
         }
         String errorMessage = "No available position.";
-        Exception exception = assertThrows(ParkingWithNoPosition.class, () ->  parkingLot.park(car));
+        Exception exception = assertThrows(ParkingWithNoPosition.class, () -> parkingLot.park(car));
         //then
-        assertEquals(errorMessage,exception.getMessage());
+        assertEquals(errorMessage, exception.getMessage());
     }
 
     @Test
@@ -136,6 +138,7 @@ public class ParkingLotTest {
         //then
         assertEquals(car, actualCar);
     }
+
     @Test
     public void should_return_right_car_when_fetch_twice_by_standark_ParkingBoy_given_a_parking_lot_with_two_parked_cars_and_two_parking_tickets() {
         //given
@@ -154,6 +157,7 @@ public class ParkingLotTest {
         assertEquals(aliceCar, actualAliceCar);
         assertEquals(bobCar, actualBobCar);
     }
+
     @Test
     public void should_return_nothing_when_fetch_car_by_Standard_Parking_boy_given_parking_lot_wrong_ticket_number() {
         //given
@@ -167,6 +171,20 @@ public class ParkingLotTest {
         assertNull(actualCar);
     }
 
+    @Test
+    public void should_return_nothing_when_fetch_car_by_Standard_Parking_boy_given_parking_lot_used_parking_ticket() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        Car car = new Car();
+        // StandardParkingBoy standardParkingBoy;
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLot);
+        ParkingTicket parkingTicket = parkingLot.park(car);
+        //when
+        parkingLot.fetch(parkingTicket);
+        Car resUsedTicket = standardParkingBoy.fetch(parkingTicket);
+        //then
+        assertNull(resUsedTicket);
+    }
 
 
 }
