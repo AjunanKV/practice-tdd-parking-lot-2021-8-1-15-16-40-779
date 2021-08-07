@@ -66,7 +66,7 @@ Given a valid parking ticket but already been used
 When fetch the car with parking boy  
 Then return no car
 
-[] Case 6
+[X] Case 6
 Given full parking lot  
 When park the car with parking boy  
 Then car cannot park and no parking ticket  
