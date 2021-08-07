@@ -41,12 +41,12 @@ When park a car
 Then return error message: No available position.   
 
 #Story 3
-[] Case1  
+[X] Case1  
 Given a parking lot, and a car  
 When park the car with parking boy  
 Then return a parking ticket.
 
-[] Case 2
+[X] Case 2
 Given a valid parking ticket  
 When fetch the car   
 Then return the car
