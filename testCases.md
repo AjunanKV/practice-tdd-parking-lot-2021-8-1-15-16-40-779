@@ -70,3 +70,13 @@ Then return no car
 Given full parking lot  
 When park the car with parking boy  
 Then car cannot park and no parking ticket  
+
+[X] Case 7
+Given wrong ticket  
+When fetch the car by Parking boy  
+Then return error message: Unrecognized parking ticket.
+
+[X] Case 8
+Given a full parking lot, a car  
+When park a car by Parking boy  
+Then return error message: No available position.  
