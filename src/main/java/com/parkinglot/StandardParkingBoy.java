@@ -13,11 +13,24 @@ public class StandardParkingBoy {
     public ParkingTicket park(Car car) {
         this.car = car;
         ParkingTicket parkingTicket = new ParkingTicket();
+        getMap().put(parkingTicket,car);
         return parkingTicket;
 }
 
+    private Map<ParkingTicket, Car> getMap() {
+        return parkingLots.getParkedPosition();
+    }
+
     public Car fetch(ParkingTicket parkingTicket) {
-        return car;
+
+        Car fetchedCar = getMap().get(parkingTicket);
+        getMap().remove(parkingTicket);
+        if (getMap().containsKey(parkingTicket)) {
+            return null;
+        }
+        else {
+            return fetchedCar;
+        }
     }
 
 
