@@ -15,11 +15,17 @@ public class ParkingLot {
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
+        if(!parkedPosition.containsKey(parkingTicket))
+        {
+            throw new UnrecognizedParkingTicketsException();
+        }
         Car fetchedCar = parkedPosition.get(parkingTicket);
         parkedPosition.remove(parkingTicket);
-        if (parkedPosition.containsKey(parkingTicket)) {
-            return null;
-        }
+
         return fetchedCar;
+    }
+
+    public Map<ParkingTicket, Car> getParkedPosition() {
+        return parkedPosition;
     }
 }
