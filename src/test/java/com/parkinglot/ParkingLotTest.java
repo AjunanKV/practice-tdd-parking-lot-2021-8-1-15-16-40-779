@@ -97,8 +97,18 @@ public class ParkingLotTest {
 
     }
 
-
-
-
-
+    @Test
+    public void should_return_No_available_position_message_when_fetch_car_given_parking_lot_without_any_position() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        Car car = new Car();
+        //when
+        for (int counter = 0; counter <= 10; counter++) {
+            parkingLot.park(car);
+        }
+        String errorMessage = "No available position.";
+        Exception exception = assertThrows(ParkingWithNoPosition.class, () ->  parkingLot.park(car));
+        //then
+        assertEquals(errorMessage,exception.getMessage());
+    }
 }
