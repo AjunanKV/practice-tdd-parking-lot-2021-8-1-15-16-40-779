@@ -12,7 +12,9 @@ public class StandardParkingBoy {
     }
 
     public ParkingTicket park(Car car) {
-        this.car = car;
+        if (getMap().size() > 10) {
+            return null;
+        }
         ParkingTicket parkingTicket = new ParkingTicket();
         getMap().put(parkingTicket, car);
         return parkingTicket;
