@@ -7,7 +7,7 @@ public class ParkingLot {
 
     public ParkingTicket park(Car car) {
         if (parkedPosition.size() >= 10) {
-            return null;
+             throw new ParkingWithNoPosition();
         }
         ParkingTicket parkingTicket = new ParkingTicket();
         parkedPosition.put(parkingTicket, car);
