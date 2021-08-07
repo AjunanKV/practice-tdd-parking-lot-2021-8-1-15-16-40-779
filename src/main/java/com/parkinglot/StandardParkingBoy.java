@@ -13,7 +13,7 @@ public class StandardParkingBoy {
 
     public ParkingTicket park(Car car) {
         if (getMap().size() > 10) {
-            return null;
+            throw new ParkingWithNoPosition();
         }
         ParkingTicket parkingTicket = new ParkingTicket();
         getMap().put(parkingTicket, car);
