@@ -6,5 +6,4 @@ public class ParkingWithNoPosition extends RuntimeException{
     {
         return "No available position.";
     }
-
 }

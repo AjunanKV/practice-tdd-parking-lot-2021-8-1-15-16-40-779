@@ -19,7 +19,6 @@ public class ParkingLot {
 
 
     public ParkingTicket park(Car car) {
-
         if (ifFull()) {
             throw new ParkingWithNoPosition();
         }
@@ -27,9 +26,8 @@ public class ParkingLot {
         parkedPosition.put(parkingTicket, car);
         return parkingTicket;
     }
-
     boolean ifFull() {
-        return DEFAULT_CAPACITY==parkedPosition.size();
+        return capacity==parkedPosition.size();
     }
 
     public Car fetch(ParkingTicket parkingTicket) {

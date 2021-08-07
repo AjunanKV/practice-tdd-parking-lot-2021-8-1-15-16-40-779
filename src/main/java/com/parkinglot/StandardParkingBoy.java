@@ -20,7 +20,6 @@ public class StandardParkingBoy {
     }
 
     public ParkingTicket park(Car car) {
-
         if (isParkingBoyManageMorethanOneParkingLot) {
             ParkingLot currentParkingLot = getAvailableParkingLot(parkingLots);
             if (currentParkingLot != null) {
@@ -29,6 +28,11 @@ public class StandardParkingBoy {
                 return null;
             }
         } else {
+
+            if(parkingLot.ifFull())
+            {
+                throw new ParkingWithNoPosition();
+            }
             ParkingTicket parkingTicket = new ParkingTicket();
             getMap().put(parkingTicket, car);
             return parkingTicket;
@@ -58,7 +62,7 @@ public class StandardParkingBoy {
         Car fetchedCar = getMap().get(parkingTicket);
         getMap().remove(parkingTicket);
         if (getMap().containsKey(parkingTicket)) {
-            return null;
+            throw new ParkingWithNoPosition();
         } else {
             return fetchedCar;
         }
