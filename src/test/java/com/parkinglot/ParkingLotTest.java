@@ -1,10 +1,24 @@
 package com.parkinglot;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingLotTest {
+
+    private ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+
+    @BeforeEach
+    public void setup() {
+        System.setOut(new PrintStream(outContent));
+    }
+
     @Test
     public void should_return_parking_ticken_when_park_given_parking_lot_and_car() {
         //given
@@ -231,4 +245,27 @@ public class ParkingLotTest {
         assertEquals(errorMessage, exception.getMessage());
     }
 
+
+    @Test
+    public void should_return_car_parked_in_first_parking_lot_when_park_given_a_standard_parking_boy_manage_two_not_full_parking_lots_and_a_car() {
+        //given
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(new ParkingLot());
+        parkingLots.add(new ParkingLot());
+        StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLots);
+        Car car = new Car();
+        //when
+        ParkingTicket parkingTicket = parkingBoy.park(car);
+
+        //then
+        assertEquals("Car is parked in Parking Lot 1", systemOut());
+        assertNotNull(parkingTicket);
+
+    }
+    private String systemOut() {
+        return outContent.toString();
+    }
+
+
 }
+
