@@ -76,7 +76,7 @@ Given wrong ticket
 When fetch the car by Parking boy  
 Then return error message: Unrecognized parking ticket.
 
-[X] Case 8
+[] Case 8
 Given a full parking lot, a car  
 When park a car by Parking boy  
 Then return error message: No available position.  
