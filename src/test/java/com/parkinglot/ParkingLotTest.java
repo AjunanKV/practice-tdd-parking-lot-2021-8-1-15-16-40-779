@@ -264,6 +264,7 @@ public class ParkingLotTest {
         assertNotNull(parkingTicket);
 
     }
+
     private String systemOut() {
         return outContent.toString();
     }
@@ -286,7 +287,7 @@ public class ParkingLotTest {
         parkingBoy.park(car);
 
         //then
-        assertEquals("Car is parked in Parking Lot 2",systemOut());
+        assertEquals("Car is parked in Parking Lot 2", systemOut());
 
     }
 
@@ -310,8 +311,8 @@ public class ParkingLotTest {
         Car actualBobCar = parkingBoy.fetch(bobTicket);
 
         //then
-        assertEquals(aliceCar,actualAliceCar);
-        assertEquals(bobCar,actualBobCar);
+        assertEquals(aliceCar, actualAliceCar);
+        assertEquals(bobCar, actualBobCar);
 
     }
 
@@ -327,8 +328,8 @@ public class ParkingLotTest {
         ParkingTicket invalidParkingTicket = new ParkingTicket();
 
         //when & then
-        Exception exception = assertThrows(UnrecognizedParkingTicketsException.class,() -> parkingBoy.fetch(invalidParkingTicket));
-        assertEquals("Unrecognized parking ticket.",exception.getMessage());
+        Exception exception = assertThrows(UnrecognizedParkingTicketsException.class, () -> parkingBoy.fetch(invalidParkingTicket));
+        assertEquals("Unrecognized parking ticket.", exception.getMessage());
     }
 
     @Test
@@ -347,9 +348,9 @@ public class ParkingLotTest {
             parkingBoy.park(car);
         }
 
-        //when
-        Exception exception = assertThrows(ParkingWithNoPosition.class,() -> parkingBoy.park(car));
-        assertEquals("No available position.",exception.getMessage());
+        //then
+        Exception exception = assertThrows(ParkingWithNoPosition.class, () -> parkingBoy.park(car));
+        assertEquals("No available position.", exception.getMessage());
     }
 
     @Test
@@ -360,17 +361,21 @@ public class ParkingLotTest {
         List<ParkingTicket> ParkingLot2 = new LinkedList<>();
         Car car = new Car();
 
-        for (int i = 0; i < 7 ; i++) {
+        for (int i = 0; i < 7; i++) {
             ParkingLot1.add(smartParkingBoy.park(car));
         }
-        for (int i = 0; i <= 6 ; i++) {
+        for (int i = 0; i <= 6; i++) {
             ParkingLot2.add(smartParkingBoy.park(car));
         }
+
+        //when
         ParkingTicket parkingTicket = smartParkingBoy.park(car);
+
         //then
         assertEquals(5, smartParkingBoy.getParkingLots().get(1).getCurrentParkedCarsCount());
         assertTrue(smartParkingBoy.getParkingLots().get(0).getCurrentParkedCarsCount() > smartParkingBoy.getParkingLots().get(1).getCurrentParkedCarsCount());
     }
+
     @Test
     void should_return_car_when_fetch_given_a_smart_parking_boy_and_parking_lot_and_a_car() {
         //given
@@ -431,10 +436,10 @@ public class ParkingLotTest {
         List<ParkingTicket> parkingLotOneTicket = new LinkedList<>();
         List<ParkingTicket> parkingLotTwoTicket = new LinkedList<>();
 
-        for (int i = 0; i < 10 ; i++) {
+        for (int i = 0; i < 10; i++) {
             parkingLotOneTicket.add(smartParkingBoy.park(car));
         }
-        for (int i = 0; i < 10 ; i++) {
+        for (int i = 0; i < 10; i++) {
             parkingLotTwoTicket.add(smartParkingBoy.park(car));
         }
 
@@ -442,7 +447,7 @@ public class ParkingLotTest {
         Exception exception = assertThrows(ParkingWithNoPosition.class, () -> smartParkingBoy.park(car));
 
         //then
-        assertEquals("No available position.",exception.getMessage());
+        assertEquals("No available position.", exception.getMessage());
     }
 
     @Test
@@ -453,13 +458,16 @@ public class ParkingLotTest {
         List<ParkingTicket> ParkingLot2 = new ArrayList<>(15);
         Car car = new Car();
 
-        for (int i = 0; i < 7 ; i++) {
+        for (int i = 0; i < 7; i++) {
             ParkingLot1.add(superSmartParkingBoy.park(car));
         }
-        for (int i = 0; i <= 6 ; i++) {
+        for (int i = 0; i <= 6; i++) {
             ParkingLot2.add(superSmartParkingBoy.park(car));
         }
+
+        //when
         ParkingTicket parkingTicket = superSmartParkingBoy.park(car);
+
         //then
         assertEquals(7, superSmartParkingBoy.getParkingLots().get(1).getCurrentParkedCarsCount());
         assertTrue(superSmartParkingBoy.getParkingLots().get(0).getCurrentParkedCarsCount() > superSmartParkingBoy.getParkingLots().get(1).getCurrentParkedCarsCount());
@@ -476,7 +484,6 @@ public class ParkingLotTest {
         parkingLots.add(parkingLot1);
         parkingLots.add(parkingLot2);
         Car car = new Car();
-
         StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLots);
         for (int i = 0; i < 9; i++) {
             parkingLot1.park(car);
@@ -485,8 +492,10 @@ public class ParkingLotTest {
             parkingLot2.park(car);
         }
         ParkingTicket parkingTicket = smartParkingBoy.park(car);
+
         //when
         Car actualCar = smartParkingBoy.fetch(parkingTicket);
+
         //then
         assertEquals(car, actualCar);
     }
@@ -542,10 +551,10 @@ public class ParkingLotTest {
         List<ParkingTicket> parkingLotOneTicket = new LinkedList<>();
         List<ParkingTicket> parkingLotTwoTicket = new LinkedList<>();
 
-        for (int i = 0; i < 10 ; i++) {
+        for (int i = 0; i < 10; i++) {
             parkingLotOneTicket.add(superSmartParkingBoy.park(car));
         }
-        for (int i = 0; i < 10 ; i++) {
+        for (int i = 0; i < 10; i++) {
             parkingLotTwoTicket.add(superSmartParkingBoy.park(car));
         }
 
@@ -553,8 +562,9 @@ public class ParkingLotTest {
         Exception exception = assertThrows(ParkingWithNoPosition.class, () -> superSmartParkingBoy.park(car));
 
         //then
-        assertEquals("No available position.",exception.getMessage());
+        assertEquals("No available position.", exception.getMessage());
     }
+
     @Test
     void return_ticket_when_park_given_super_smart_parking_boy_2_parking_slot_with_10_car_but_not_higher_than_20() {
         //given
@@ -563,13 +573,13 @@ public class ParkingLotTest {
         List<ParkingTicket> parkingTicket = new LinkedList<>();
 
         //when
-        for (int i = 0; i < 20 ; i++) {
+        for (int i = 0; i < 20; i++) {
             parkingTicket.add(superSmartParkingBoy.park(car));
         }
         Exception exception = assertThrows(ParkingWithNoPosition.class, () -> superSmartParkingBoy.park(car));
 
         //then
-        assertEquals("No available position.",exception.getMessage());
+        assertEquals("No available position.", exception.getMessage());
     }
 
 }
