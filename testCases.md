@@ -123,7 +123,7 @@ Given a multiple parking lots, and a car
 When park the car with parking boy  
 Then return a parking ticket always from the the parking lot with most spaces
 
-[] Case 2  
+[X] Case 2  
 Given a valid parking ticket  
 When fetch the car   
 Then return the car
