@@ -24,7 +24,7 @@ public class SmartParkingBoy extends StandardParkingBoy{
                 .stream()
                 .filter(parkingLot -> !parkingLot.ifFull())
                 .min(Comparator.comparing(ParkingLot::getCurrentParkedCarsCount))
-                .orElseThrow(null);
+                .orElseThrow(ParkingWithNoPosition::new);
     }
 
 
