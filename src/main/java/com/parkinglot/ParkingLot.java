@@ -26,7 +26,7 @@ public class ParkingLot {
         parkedPosition.put(parkingTicket, car);
         return parkingTicket;
     }
-    boolean ifFull() {
+    public boolean ifFull() {
         return capacity==parkedPosition.size();
     }
 
@@ -42,5 +42,17 @@ public class ParkingLot {
 
     public Map<ParkingTicket, Car> getParkedPosition() {
         return parkedPosition;
+    }
+
+    public int getRemainingParkingLotSpaces() {
+        return capacity - parkedPosition.size();
+    }
+
+    public int getParkingLotCapacity() {
+        return capacity;
+    }
+
+    public int getCurrentParkedCarsCount() {
+        return parkedPosition.size();
     }
 }

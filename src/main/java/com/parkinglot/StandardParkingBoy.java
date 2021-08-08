@@ -8,7 +8,7 @@ public class StandardParkingBoy {
     private Car car;
     ParkingLot parkingLot = new ParkingLot();
     private List<ParkingLot> parkingLots;
-    private boolean isParkingBoyManageMorethanOneParkingLot=false;
+    private boolean isParkingBoyManageMorethanOneParkingLot = false;
 
     public StandardParkingBoy(ParkingLot parkingLots) {
         this.parkingLot = parkingLots;
@@ -29,8 +29,7 @@ public class StandardParkingBoy {
             }
         } else {
 
-            if(parkingLot.ifFull())
-            {
+            if (parkingLot.ifFull()) {
                 throw new ParkingWithNoPosition();
             }
             ParkingTicket parkingTicket = new ParkingTicket();
@@ -56,23 +55,19 @@ public class StandardParkingBoy {
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-       ParkingLot findCarinParkingLot = findCarinParkingLot(parkingTicket);
-       if(findCarinParkingLot == null)
-       {
-           throw new UnrecognizedParkingTicketsException();
-       }
-       else{
-           return findCarinParkingLot.fetch(parkingTicket);
-       }
+        ParkingLot findCarinParkingLot = findCarinParkingLot(parkingTicket);
+        if (findCarinParkingLot == null) {
+            throw new UnrecognizedParkingTicketsException();
+        } else {
+            return findCarinParkingLot.fetch(parkingTicket);
+        }
 
     }
 
     private ParkingLot findCarinParkingLot(ParkingTicket parkingTicket) {
-        if(isParkingBoyManageMorethanOneParkingLot)
-        {
-            for(ParkingLot currentParkingLot : parkingLots)
-            {
-                if(currentParkingLot.getParkedPosition().containsKey(parkingTicket)){
+        if (isParkingBoyManageMorethanOneParkingLot) {
+            for (ParkingLot currentParkingLot : parkingLots) {
+                if (currentParkingLot.getParkedPosition().containsKey(parkingTicket)) {
                     return currentParkingLot;
                 }
             }
@@ -80,4 +75,11 @@ public class StandardParkingBoy {
         return parkingLot;
     }
 
+    public List<ParkingLot> getParkingLists() {
+        return this.parkingLots;
+    }
+
+    protected List<ParkingLot> getParkingLots() {
+        return parkingLots;
+    }
 }
