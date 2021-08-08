@@ -445,6 +445,26 @@ public class ParkingLotTest {
         assertEquals("No available position.",exception.getMessage());
     }
 
+    @Test
+    void should_return_car_given_super_smart_parking_boy_a_parking_lot_and_car() {
+        //given
+        StandardParkingBoy superSmartParkingBoy = new StandardParkingBoy(Arrays.asList(new ParkingLot(), new ParkingLot()));
+        List<ParkingTicket> ParkingLot1 = new LinkedList<>();
+        List<ParkingTicket> ParkingLot2 = new LinkedList<>();
+        Car car = new Car();
+
+        for (int i = 0; i < 7 ; i++) {
+            ParkingLot1.add(superSmartParkingBoy.park(car));
+        }
+        for (int i = 0; i <= 6 ; i++) {
+            ParkingLot2.add(superSmartParkingBoy.park(car));
+        }
+        ParkingTicket parkingTicket = superSmartParkingBoy.park(car);
+        //then
+        assertEquals(5, superSmartParkingBoy.getParkingLots().get(1).getCurrentParkedCarsCount());
+        assertTrue(superSmartParkingBoy.getParkingLots().get(0).getCurrentParkedCarsCount() > superSmartParkingBoy.getParkingLots().get(1).getCurrentParkedCarsCount());
+
+    }
 
 
 
