@@ -448,9 +448,9 @@ public class ParkingLotTest {
     @Test
     void should_return_car_given_super_smart_parking_boy_a_parking_lot_and_car() {
         //given
-        StandardParkingBoy superSmartParkingBoy = new StandardParkingBoy(Arrays.asList(new ParkingLot(), new ParkingLot()));
-        List<ParkingTicket> ParkingLot1 = new LinkedList<>();
-        List<ParkingTicket> ParkingLot2 = new LinkedList<>();
+        SmartParkingBoy superSmartParkingBoy = new SmartParkingBoy(Arrays.asList(new ParkingLot(), new ParkingLot()));
+        List<ParkingTicket> ParkingLot1 = new ArrayList<>(10);
+        List<ParkingTicket> ParkingLot2 = new ArrayList<>(15);
         Car car = new Car();
 
         for (int i = 0; i < 7 ; i++) {
@@ -461,7 +461,7 @@ public class ParkingLotTest {
         }
         ParkingTicket parkingTicket = superSmartParkingBoy.park(car);
         //then
-        assertEquals(5, superSmartParkingBoy.getParkingLots().get(1).getCurrentParkedCarsCount());
+        assertEquals(7, superSmartParkingBoy.getParkingLots().get(1).getCurrentParkedCarsCount());
         assertTrue(superSmartParkingBoy.getParkingLots().get(0).getCurrentParkedCarsCount() > superSmartParkingBoy.getParkingLots().get(1).getCurrentParkedCarsCount());
 
     }
@@ -469,19 +469,45 @@ public class ParkingLotTest {
     @Test
     void should_return_car_when_fetch_given_super_smart_parking_boy_and_parking_lot_and_car() {
         //given
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(new ParkingLot(), new ParkingLot()));
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        ParkingLot parkingLot1 = new ParkingLot();
+        ParkingLot parkingLot2 = new ParkingLot();
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
         Car car = new Car();
-        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(new ParkingLot());
-        ParkingTicket parkingTicket = superSmartParkingBoy.park(car);
 
+        StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLots);
+        for (int i = 0; i < 9; i++) {
+            parkingLot1.park(car);
+        }
+        for (int i = 0; i < 5; i++) {
+            parkingLot2.park(car);
+        }
+        ParkingTicket parkingTicket = smartParkingBoy.park(car);
         //when
-        Car actualCar = superSmartParkingBoy.fetch(parkingTicket);
-
+        Car actualCar = smartParkingBoy.fetch(parkingTicket);
         //then
         assertEquals(car, actualCar);
     }
 
+    @Test
+    void should_return_car_when_fetch_given_super_smart_parking_boy_and_two_parked_cars_and_parking_lot() {
+        //given
+        Car aliceCar = new Car();
+        Car bobCar = new Car();
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(Arrays.asList(new ParkingLot(), new ParkingLot()));
+        ParkingTicket aliceTicket = superSmartParkingBoy.park(aliceCar);
+        ParkingTicket bobTicket = superSmartParkingBoy.park(bobCar);
+        //when
+        Car actualAliceCar = superSmartParkingBoy.fetch(aliceTicket);
+        Car actualBobCar = superSmartParkingBoy.fetch(bobTicket);
+        //then
+        assertEquals(aliceCar, actualAliceCar);
+        assertEquals(bobCar, actualBobCar);
+    }
 
-
+   
 
 }
 
