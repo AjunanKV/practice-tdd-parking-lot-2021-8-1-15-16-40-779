@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -349,6 +351,30 @@ public class ParkingLotTest {
         Exception exception = assertThrows(ParkingWithNoPosition.class,() -> parkingBoy.park(car));
         assertEquals("No available position.",exception.getMessage());
     }
+
+    @Test
+    public void should_return_Parking_ticket_when_park_car_by_Smart_parking_boy_given_parking_lot_and_car() {
+        //given
+        StandardParkingBoy smartParkingBoy = new StandardParkingBoy(Arrays.asList(new ParkingLot(), new ParkingLot()));
+        List<ParkingTicket> parkingLotOneTicket = new LinkedList<>();
+        List<ParkingTicket> parkingLotTwoTicket = new LinkedList<>();
+        Car car = new Car();
+        //SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
+        for (int i = 0; i < 7 ; i++) {
+            parkingLotOneTicket.add(smartParkingBoy.park(car));
+        }
+        for (int i = 0; i <= 6 ; i++) {
+            parkingLotTwoTicket.add(smartParkingBoy.park(car));
+        }
+        ParkingTicket parkingTicket = smartParkingBoy.park(car);
+        //then
+        assertEquals(5, smartParkingBoy.getParkingLots().get(1).getCurrentParkedCarsCount());
+        assertTrue(smartParkingBoy.getParkingLots().get(0).getCurrentParkedCarsCount() > smartParkingBoy.getParkingLots().get(1).getCurrentParkedCarsCount());
+    }
+
+
+
+
 }
 
 
