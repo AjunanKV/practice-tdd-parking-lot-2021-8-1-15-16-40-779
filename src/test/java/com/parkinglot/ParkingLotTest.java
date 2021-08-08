@@ -466,6 +466,20 @@ public class ParkingLotTest {
 
     }
 
+    @Test
+    void should_return_car_when_fetch_given_super_smart_parking_boy_and_parking_lot_and_car() {
+        //given
+        Car car = new Car();
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(new ParkingLot());
+        ParkingTicket parkingTicket = superSmartParkingBoy.park(car);
+
+        //when
+        Car actualCar = superSmartParkingBoy.fetch(parkingTicket);
+
+        //then
+        assertEquals(car, actualCar);
+    }
+
 
 
 
