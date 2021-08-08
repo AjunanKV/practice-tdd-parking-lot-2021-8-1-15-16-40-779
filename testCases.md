@@ -128,22 +128,22 @@ Given a valid parking ticket
 When fetch the car   
 Then return the car
 
-[] Case 3  
+[X] Case 3  
 Given a parking lot with two parked cars and two parking tickets  
 When fetch twice with parking boy  
 Then return right car
 
-[] Case 4  
+[X] Case 4  
 Given full parking lot  
 When park the car with parking boy  
 Then car cannot park and no parking ticket
 
-[] Case 5  
+[X] Case 5  
 Given wrong ticket  
 When fetch the car by Parking boy  
 Then return error message: Unrecognized parking ticket.
 
-[] Case 6  
+[X] Case 6  
 Given a full parking lot, a car  
 When park a car by Parking boy  
 Then return error message: No available position.  
