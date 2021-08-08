@@ -10,9 +10,8 @@ public class SmartParkingBoy extends StandardParkingBoy{
         super(parkingLot);
     }
 
-    public SmartParkingBoy(ParkingLot parkingLots, List<ParkingLot> parkingLots1) {
-        super(parkingLots);
-        this.parkingLots = parkingLots1;
+    public SmartParkingBoy(List<ParkingLot> parkingLots1) {
+        super(parkingLots1);
     }
 
 
