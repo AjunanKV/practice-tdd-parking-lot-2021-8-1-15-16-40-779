@@ -6,15 +6,15 @@ import java.util.List;
 public class SmartParkingBoy extends StandardParkingBoy{
     private List<ParkingLot> parkingLots;
 
+    public SmartParkingBoy(ParkingLot parkingLot) {
+        super(parkingLot);
+    }
+
     public SmartParkingBoy(ParkingLot parkingLots, List<ParkingLot> parkingLots1) {
         super(parkingLots);
         this.parkingLots = parkingLots1;
     }
 
-    public SmartParkingBoy(List<ParkingLot> parkingLots, List<ParkingLot> parkingLots1) {
-        super(parkingLots);
-        this.parkingLots = parkingLots1;
-    }
 
     public ParkingTicket park(Car car) {
         return getAvailableSmartParkingLot().park(car);
