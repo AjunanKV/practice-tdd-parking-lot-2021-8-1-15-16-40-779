@@ -387,7 +387,6 @@ public class ParkingLotTest {
         parkingLots.add(parkingLot2);
         Car car = new Car();
 
-        StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLots);
         for (int i = 0; i < 9; i++) {
             parkingLot1.park(car);
         }

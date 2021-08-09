@@ -1,14 +1,10 @@
 package com.parkinglot;
-import java.util.ArrayList;
+
 import java.util.Comparator;
 import java.util.List;
 
-public class SmartParkingBoy extends StandardParkingBoy{
-    private List<ParkingLot> parkingLots;
+public class SmartParkingBoy extends StandardParkingBoy {
 
-    public SmartParkingBoy(ParkingLot parkingLot) {
-        super(parkingLot);
-    }
 
     public SmartParkingBoy(List<ParkingLot> parkingLots1) {
         super(parkingLots1);
@@ -19,7 +15,7 @@ public class SmartParkingBoy extends StandardParkingBoy{
         return getAvailableSmartParkingLot().park(car);
     }
 
-    private ParkingLot getAvailableSmartParkingLot(){
+    private ParkingLot getAvailableSmartParkingLot() {
         return getParkingLots()
                 .stream()
                 .filter(parkingLot -> !parkingLot.ifFull())
@@ -28,5 +24,5 @@ public class SmartParkingBoy extends StandardParkingBoy{
     }
 
 
-    }
+}
 

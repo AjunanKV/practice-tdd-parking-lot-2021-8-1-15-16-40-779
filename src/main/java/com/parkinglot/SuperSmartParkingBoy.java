@@ -3,11 +3,8 @@ package com.parkinglot;
 import java.util.Comparator;
 import java.util.List;
 
-public class SuperSmartParkingBoy extends StandardParkingBoy{
+public class SuperSmartParkingBoy extends StandardParkingBoy {
 
-    public SuperSmartParkingBoy(ParkingLot parkingLot) {
-        super(parkingLot);
-    }
 
     public SuperSmartParkingBoy(List<ParkingLot> parkingLots) {
         super(parkingLots);
@@ -18,7 +15,7 @@ public class SuperSmartParkingBoy extends StandardParkingBoy{
         return getAvailableSmartParkingLot().park(car);
     }
 
-    private ParkingLot getAvailableSmartParkingLot(){
+    private ParkingLot getAvailableSmartParkingLot() {
         return getParkingLots()
                 .stream()
                 .filter(parkingLot -> !parkingLot.ifFull())

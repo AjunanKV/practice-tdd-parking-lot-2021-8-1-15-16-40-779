@@ -5,7 +5,6 @@ import java.util.Map;
 
 
 public class StandardParkingBoy {
-    private Car car;
     ParkingLot parkingLot = new ParkingLot();
     private List<ParkingLot> parkingLots;
     private boolean isParkingBoyManageMorethanOneParkingLot = false;
